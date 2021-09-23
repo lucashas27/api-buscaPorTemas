@@ -43,7 +43,7 @@ router.get('/temas/:id', async (req, res, next) => {
       'Dados completos': data
     });
   } catch (error) {
-    console.error("Algum erro inesperado aconteceu:" + error)
+    console.error("Algum erro inesperado aconteceu: " + error)
   }
 
 });
