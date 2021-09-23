@@ -1,9 +1,15 @@
 const express = require('express');
 const router = express.Router();
-router.get('/', function (req, res, next) {
-    res.status(200).send({
-        title: "Node Express API",
-        version: "0.0.1"
-    });
+const axios = require('axios');
+
+router.get('/temas', async(req, res, next) => {
+  
+  // Consumindo todos os temas de votações da API da câmara e filtrando por nome
+  const { data } = await axios('https://dadosabertos.camara.leg.br/api/v2/referencias/proposicoes/codTema')
+    temas = data.dados.map(dados => dados.nome) 
+    res.status(200).json({
+        temas
+        });
 });
+
 module.exports = router;
